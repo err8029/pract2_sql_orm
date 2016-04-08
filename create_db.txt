@@ -1,0 +1,7 @@
+sqlite3 mydatabase.db
+
+BEGIN;
+CREATE TABLE users (username TEXT, fullname TEXT, email TEXT, password TEXT);
+COMMIT;
+
+
