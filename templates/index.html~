@@ -15,7 +15,7 @@
          </tr>
          <tr>
             <td align="center"><img src="/static/login.png" alt="login" heigh="100" width="100" align="center"></td>
-            <td align="center"><h3><a href="login"> login</a></h3></td>
+            <td align="center"><h3><a href="login_form"> login</a></h3></td>
          </tr>
       </table>
       </table>
