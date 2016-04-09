@@ -45,6 +45,27 @@ def show_users():
 def login_form():
     return render_template('login_form.html')
 
+@app.route('/user_login',  methods=['POST'])
+def user_login():
+    conn = sqlite3.connect('mydatabase.db')
+    username = request.form.get('username')
+    password = request.form.get('password')
+    cursor = conn.execute("select username,password,email,fullname from users")
+    acces = [row for row in cursor]
+    enter = None 
+    for userdata in acces:
+        (dbuser,dbpass,dbemail,dbfullname) = userdata
+        if (dbuser == username and dbpass == password):
+            enter=True
+            break
+    conn.close()
+    return render_template('login.html',
+                           enter=enter,
+                           username = dbuser,
+                           password = dbpass,
+                           email = dbemail,
+                           fullname = dbfullname)
+
 
 if __name__=="__main__":
     app.run('0.0.0.0')

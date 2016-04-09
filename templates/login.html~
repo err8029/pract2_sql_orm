@@ -1,0 +1,13 @@
+<html>
+   <head>
+      <title>User inserted</title>
+   </head>
+   <body>
+      {% if enter %}
+      <h1><center><h3>User succesfully logged<h3></center></h1>
+      {% endif %}
+      {% if not enter %}
+      <h1><center><h3>Bad login<h3></center></h1>
+      {% endif %}
+   </body>
+</html>
