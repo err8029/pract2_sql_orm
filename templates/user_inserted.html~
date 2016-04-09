@@ -1,0 +1,22 @@
+<html>
+   <head>
+      <title>User inserted</title>
+   </head>
+   <body>
+      <h1><center><h3>User succesfully inserted<h3></center></h1>
+         <table border=3 width="50%" heigh="50%" border="0" cellspacing="5" cellpadding="10" align="center" bgcolor=#adebeb>
+            <tr>
+               <th>Username</th>
+               <th>Fullname</th>
+               <th>E-mail</th>
+               <th>Password</th>
+            </tr>
+            <tr>
+               <td>{{username}}</td>
+               <td>{{Fullname}}</td>
+               <td>{{E-mail}}</td>
+               <td>{{Password}}</td>
+            </tr>
+         </table>
+   </body>
+</html>

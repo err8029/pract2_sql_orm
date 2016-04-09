@@ -1,7 +1,31 @@
 <html>
    <head>
-      <title>Insert_user</title>
+      <title>Insert user</title>
    </head>
    <body>
+      <h1><center><h3>Inser User<h3></center></h1>
+      <form action="/user_register" method="post">
+         <table border=3 width="50%" heigh="50%" border="0" cellspacing="5" cellpadding="10" align="center" bgcolor=#adebeb>
+            <tr>
+               <td>Username</td>
+               <td><input type="text" name="username"></td>
+            </tr>
+            <tr>
+               <td>Fullname</td>
+               <td><input type="text" name="fullname"></td>
+            </tr>
+            <tr>
+               <td>E-mail</td>
+               <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+               <td>Password</td>
+               <td><input type="text" name="password"></td>
+            </tr>
+            <tr>
+               <td><input type="submit" value="Submit"></td>
+            </tr>
+         </table>
+      </form>
    </body>
 </html>
