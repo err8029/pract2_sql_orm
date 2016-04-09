@@ -2,22 +2,30 @@
    <head>
       <title>Index</title>
    </head>
-   <body>
-      <h1><center>Landing page</center></h1>
-      <table border=3 width="50%" heigh="50%" border="0" cellspacing="5" cellpadding="10" align="center" bgcolor=#adebeb>
+   <style>
+   table {
+   border-collapse: collapse;
+   }
+   td {
+   border: 3px solid white;
+   }
+   </style>
+   <body background="/static/bg.png">
+      <p></p>
+      <h1 color=white><center><font color=white>Landing page</center></font></h1>
+      <table width="50%" heigh="50%" cellspacing="5" cellpadding="10" align="center" background="/static/bgtable.jpg">
          <tr>
             <td align="center"><img src="/static/users2.png" alt="users" heigh="100" width="100"></td>
-            <td align="center"><h3><a href="insert_user"> Add user</a></h3></td>
+            <td align="center"><h3><a href="insert_user"><font color=#293d3d>Add user</font></a></h3></td>
          </tr>
          <tr>
             <td align="center"><img src="/static/table.png" alt="table" heigh="100" width="100" align="center"></td>
-            <td align="center"><h3><a href="show_users"> Users table</a></h3></td>
+            <td align="center"><h3><a href="show_users"><font color=#293d3d>Show users</font></a></h3></td>
          </tr>
          <tr>
             <td align="center"><img src="/static/login.png" alt="login" heigh="100" width="100" align="center"></td>
-            <td align="center"><h3><a href="login"> login</a></h3></td>
+            <td align="center"><h3><a href="login"><font color=#293d3d>Login</font></a></h3></td>
          </tr>
-      </table>
       </table>
    </body>
 </html>

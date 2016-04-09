@@ -2,11 +2,22 @@
    <head>
       <title>User inserted</title>
    </head>
-   <body>
+   <style>
+   table {
+   border-collapse: collapse;
+   }
+   td {
+   border: 3px solid white;
+   }
+   th {
+   border: 3px solid white;
+   }
+   </style>
+   <body background="/static/bg.png">
       {% if enter %}
-      <h1><center><h3>User succesfully logged {{exist}}<h3></center></h1>
-      <table border=3 width="50%" heigh="50%" border="0" cellspacing="5" cellpadding="10" align="center" bgcolor=#adebeb>
-            <tr>
+      <h1><center><h3><font color=white>User succesfully logged</font><h3></center></h1>
+      <table width="50%" heigh="50%" cellspacing="5" cellpadding="10" align="center" background="/static/bgtable.jpg">
+            <tr bgcolor=#c2d6d6>
                <th>Username</th>
                <th>Fullname</th>
                <th>E-mail</th>
@@ -21,7 +32,10 @@
       </table>
       {% endif %}
       {% if not enter %}
-      <h1><center><h3>Bad login<h3></center></h1>
+      <h1><center><h3><font color=white>Bad login</font><h3></center></h1>
       {% endif %}
+      <table width="50%" heigh="50%" cellspacing="5" cellpadding="10" align="center" bgcolor=#c2d6d6>
+         <tr><td><center><font color=#293d3d><a href="/">Home page</font></a></center></td></tr>
+      </table>
    </body>
 </html>

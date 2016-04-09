@@ -2,10 +2,21 @@
    <head>
       <title>Show users</title>
    </head>
-   <body>
-      <h1><center><h3>User table<h3></center></h1>
-         <table border=3 width="50%" heigh="50%" border="0" cellspacing="5" cellpadding="10" align="center" bgcolor=#adebeb>
-            <tr>
+   <style>
+   table {
+   border-collapse: collapse;
+   }
+   td {
+   border: 3px solid white;
+   }
+   th {
+   border: 3px solid white;
+   }
+   </style>
+   <body background="/static/bg.png">
+      <h1><center><h3><font color=white>User table</font><h3></center></h1>
+         <table width="50%" heigh="50%" cellspacing="5" cellpadding="10" align="center" background="/static/bgtable.jpg">
+            <tr bgcolor=#c2d6d6>
                <th>Username</th>
                <th>Password</th>
                <th>E-mail</th>
@@ -18,6 +29,9 @@
             {% endfor %}
             </tr>
             {% endfor %}
+         </table>
+         <table width="50%" heigh="50%" cellspacing="5" cellpadding="10" align="center" bgcolor=#c2d6d6>
+            <tr><td><center><font color=#293d3d><a href="/">Home page</font></a></center></td></tr>
          </table>
    </body>
 </html>
