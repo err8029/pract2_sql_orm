@@ -3,6 +3,7 @@
       <title>User inserted</title>
    </head>
    <body>
+      {% if exist %}
       <h1><center><h3>User succesfully inserted<h3></center></h1>
          <table border=3 width="50%" heigh="50%" border="0" cellspacing="5" cellpadding="10" align="center" bgcolor=#adebeb>
             <tr>
@@ -13,10 +14,14 @@
             </tr>
             <tr>
                <td>{{username}}</td>
-               <td>{{Fullname}}</td>
-               <td>{{E-mail}}</td>
-               <td>{{Password}}</td>
+               <td>{{fullname}}</td>
+               <td>{{email}}</td>
+               <td>{{password}}</td>
             </tr>
          </table>
+      {% endif %}
+      {% if not exist %}
+      <h1><center><h3>User already exists<h3></center></h1>
+      {% endif %}
    </body>
 </html>

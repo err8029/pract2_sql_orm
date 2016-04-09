@@ -37,12 +37,21 @@ def user_register():
     fullname = request.form.get('fullname')
     email = request.form.get('email')
     password = request.form.get('password')
-    set_data(username,fullname,email,password)
+    data=get_data()
+    exist = None
+    for userdata in data:
+        (dbuser,dbpass,dbemail,dbfullname) = userdata
+        if (username == dbuser):
+            exist = True
+            break
+    if (exist != True):
+        set_data(username,fullname,email,password)
     return render_template('user_inserted.html',
                            username=username,
                            fullname=fullname,
                            email=email,
-                           password=password)
+                           password=password,
+                           exist=exist)
 
 @app.route('/show_users')
 def show_users():
