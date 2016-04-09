@@ -3,5 +3,21 @@
       <title>Show users</title>
    </head>
    <body>
+      <h1><center><h3>User table<h3></center></h1>
+         <table border=3 width="50%" heigh="50%" border="0" cellspacing="5" cellpadding="10" align="center" bgcolor=#adebeb>
+            <tr>
+               <th>Username</th>
+               <th>Fullname</th>
+               <th>E-mail</th>
+               <th>Password</th>
+            </tr>
+            {% for fila in data %}
+            <tr>
+            {% for cela in fila %}
+               <td>{{cela}}</td>
+            {% endfor %}
+            </tr>
+            {% endfor %}
+         </table>
    </body>
 </html>
