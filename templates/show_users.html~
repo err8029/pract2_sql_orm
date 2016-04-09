@@ -14,7 +14,7 @@
             {% for fila in data %}
             <tr>
             {% for cela in fila %}
-               <td>o</td>
+               <td>{{cela}}</td>
             {% endfor %}
             </tr>
             {% endfor %}

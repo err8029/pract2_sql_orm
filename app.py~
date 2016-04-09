@@ -4,6 +4,24 @@ import sqlite3
 
 app = Flask(__name__)
 
+def get_data():
+    conn = sqlite3.connect('mydatabase.db')
+    cursor = conn.execute("select username,password,email,fullname from users")
+    acces = [row for row in cursor]
+    conn.close()
+    return acces
+
+def set_data(username,fullname,email,password):
+    conn = sqlite3.connect('mydatabase.db')
+    cursor=conn.execute("insert into users (username,fullname,email,password) values (?, ?, ?, ?)",
+                       (username,
+                        fullname,
+                        email,
+                        password))
+    conn.commit()
+    conn.close()
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -14,18 +32,11 @@ def insert_user():
 
 @app.route('/user_register', methods=['POST'])
 def user_register():
-    conn = sqlite3.connect('mydatabase.db')
     username = request.form.get('username')
     fullname = request.form.get('fullname')
     email = request.form.get('email')
     password = request.form.get('password')
-    cursor=conn.execute("insert into users (username,fullname,email,password) values (?, ?, ?, ?)",
-                       (username,
-                        fullname,
-                        email,
-                        password))
-    conn.commit()
-    conn.close()
+    set_data(username,fullname,email,password)
     return render_template('user_inserted.html',
                            username=username,
                            fullname=fullname,
@@ -34,10 +45,7 @@ def user_register():
 
 @app.route('/show_users')
 def show_users():
-    conn = sqlite3.connect('mydatabase.db')
-    cursor=conn.execute("select username,fullname,email,password from users")
-    data=[row for row in cursor]
-    conn.close()
+    data=get_data()
     return render_template('show_users.html',
                            data=data)
 
@@ -47,20 +55,17 @@ def login_form():
 
 @app.route('/user_login',  methods=['POST'])
 def user_login():
-    conn = sqlite3.connect('mydatabase.db')
     username = request.form.get('username')
     password = request.form.get('password')
-    cursor = conn.execute("select username,password,email,fullname from users")
-    acces = [row for row in cursor]
+    acces = get_data()
     enter = None 
     for userdata in acces:
         (dbuser,dbpass,dbemail,dbfullname) = userdata
         if (dbuser == username and dbpass == password):
             enter=True
             break
-    conn.close()
     return render_template('login.html',
-                           enter=enter
+                           enter=enter,
                            username = dbuser,
                            password = dbpass,
                            email = dbemail,
