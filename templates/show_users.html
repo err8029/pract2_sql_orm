@@ -3,35 +3,126 @@
       <title>Show users</title>
    </head>
    <style>
-   table {
-   border-collapse: collapse;
-   }
-   td {
-   border: 3px solid white;
-   }
-   th {
-   border: 3px solid white;
-   }
+    /*traiem els puntets de la llista li donem un color i la fixem a dalt*/
+    ul {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
+     background-image: url("/static/menubg.PNG");
+     background-repeat: repeat-x;
+     position: fixed;
+     top: 0;
+     width: 100%;
+    }
+    /*posem els li en horitzontal*/
+    li {
+     float: left
+     }
+    /*permetem que el bloc sigui clicable i li donem mida i propietats al text*/
+    li a{
+     display: block;
+     padding: 8px;
+     color: white;
+     text-align: center;
+     text-decoration: none;
+     }
+    /*efecte al posar el ratoli al damunt*/
+    li a:hover {
+     background-image: url("/static/act.png");
+     background-repeat: repeat-x;
+     color: black;
+    }
+    li.actiu {
+     background-image: url("/static/act.png");
+     background-repeat: repeat-x;
+     color: white;
+    }
+    /*fem una configuracio d'estil per a cada pseudoclasse de divs*/
+    div.principal {
+     width: 850px;
+     color: white;
+     background-color: #333;
+     text-align: center;
+     padding: 15px;
+     margin: 52px;
+    }
+    div.seccio {
+     width: 700px;
+     color: white;
+     background-color: #555;
+     padding: 30px;
+    }
+    div.topfons{
+     margin: 0px;
+     width: 850px;
+     height: 200px;
+     background-image: url("/static/cabimg.jpg");
+     background-repeat: no-repeat;
+    }
+    /*permetem repeticio de fons per adaptarse a la taula*/
+    div.fonscontingut{
+     padding: 20px;
+     width: 810px;
+     background-image: url("/static/fonscont.jpg");
+     background-repeat: repeat-y;
+    }
+    table {
+     border-collapse: collapse;
+     margin: 20px;
+    }
+    td {
+     border: 3px solid white;
+     background-color: #777;
+     text-align: center;
+     padding: 5px;
+     color: white;
+     padding: 10px;
+    }
+    th {
+     border: 3px solid white;
+     text-align: center;
+     padding: 10px;
+    }
    </style>
    <body background="/static/bg.png">
-      <h1><center><h3><font color=white>User table</font><h3></center></h1>
-         <table width="50%" heigh="50%" cellspacing="5" cellpadding="10" align="center" background="/static/bgtable.jpg">
-            <tr bgcolor=#c2d6d6>
-               <th>Username</th>
-               <th>Password</th>
-               <th>E-mail</th>
-               <th>Fullname</th>
-            </tr>
-            {% for fila in data %}
-            <tr>
-            {% for cela in fila %}
-               <td>{{cela}}</td>
-            {% endfor %}
-            </tr>
-            {% endfor %}
-         </table>
-         <table width="50%" heigh="50%" cellspacing="5" cellpadding="10" align="center" bgcolor=#c2d6d6>
-            <tr><td><center><font color=#293d3d><a href="/">Home page</font></a></center></td></tr>
-         </table>
+   <ul>     
+         <li><a href="insert_user">Add user</a></li>
+         <li class="actiu"><a href="show_users">Show users</a></li>
+         <li><a href="login">Login</a></li>
+         <li style="float:right"><a href="/">Home&nbsp;&nbsp;&nbsp;</a></li>      
+      </ul>     
+      <center>
+         <div class="principal">
+            <div class="topfons"></div>
+            <h3>User table</h3>
+            <div class="fonscontingut">
+              <center>
+               <div class="seccio">
+                  <table>
+                     <tr bgcolor=#c2d6d6>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>E-mail</th>
+                        <th>Fullname</th>
+                     </tr>
+                     {% for fila in data %}
+                     <tr>
+                        {% for cela in fila %}
+                        <td>{{cela}}</td>
+                        {% endfor %}
+                     </tr>
+                     {% endfor %}
+                  </table>
+                  <form action="/show_users" method="POST">
+                    <input type="radio" name="delete" value="True">
+                    <input type="submit" value="Delete all users">
+                  </form>
+               </div>
+              </center>
+            </div>
+            <p>Programing communications 3 &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; Task 2 &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; SQL and ORM databases</p>
+         </div>
+      </center>
    </body>
 </html>

@@ -22,6 +22,12 @@ def set_data(username,fullname,email,password):
     conn.commit()
     conn.close()
 
+def delete_all():
+    conn = sqlite3.connect('mydatabase.db')
+    cursor = conn.execute("delete from users")
+    conn.commit()
+    conn.close()
+
 #-------------------------------App methods----------------------------------------
 @app.route('/')
 def index():
@@ -53,9 +59,16 @@ def user_register():
                            password=password,
                            exist=exist)
 
-@app.route('/show_users')
+@app.route('/show_users', methods=['POST','GET'])
 def show_users():
-    data=get_data()
+    delete="False"
+    if request.method=='GET':
+        data=get_data()
+    if request.method=='POST':
+        delete = request.form.get('delete')
+        if delete=="True":
+            delete_all()
+            return render_template('index.html')
     return render_template('show_users.html',
                            data=data)
 

@@ -9,7 +9,8 @@
      margin: 0;
      padding: 0;
      overflow: hidden;
-     background-color: #333;
+     background-image: url("/static/menubg.PNG");
+     background-repeat: repeat-x;
      position: fixed;
      top: 0;
      width: 100%;
@@ -28,7 +29,14 @@
      }
     /*efecte al posar el ratoli al damunt*/
     li a:hover {
-    background-color: #555;
+     background-image: url("/static/act.png");
+     background-repeat: repeat-x;
+     color: black;
+    }
+    li.actiu {
+     background-image: url("/static/act.png");
+     background-repeat: repeat-x;
+     color: white;
     }
     /*fem una configuracio d'estil per a cada pseudoclasse de divs*/
     div.principal {
@@ -79,7 +87,8 @@
       <ul>     
          <li><a href="insert_user">Add user</a></li>
          <li><a href="show_users">Show users</a></li>
-         <li><a href="login">Login</a></li>       
+         <li><a href="login">Login</a></li> 
+         <li style="float:right"><a href="/">Home&nbsp;&nbsp;&nbsp;</a></li>      
       </ul>
       <center>
          <div class="principal">
