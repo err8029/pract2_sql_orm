@@ -21,7 +21,7 @@ def set_data(username,fullname,email,password):
                         password))
     conn.commit()
     conn.close()
-
+#delete function optional (it deletes all users from the table)
 def delete_all():
     conn = sqlite3.connect('mydatabase.db')
     cursor = conn.execute("delete from users")
