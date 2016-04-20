@@ -21,12 +21,17 @@ def set_data(username,fullname,email,password):
                         password))
     conn.commit()
     conn.close()
+
 #delete function optional (it deletes all users from the table)
 def delete_all():
     conn = sqlite3.connect('mydatabase.db')
     cursor = conn.execute("delete from users")
     conn.commit()
     conn.close()
+
+#---------------ORM functions in order to select and insert------------------------
+
+
 
 #-------------------------------App methods----------------------------------------
 @app.route('/')
@@ -37,13 +42,7 @@ def index():
 def insert_user():
     return render_template('insert_user.html')
 
-@app.route('/user_register', methods=['POST'])
-def user_register():
-    username = request.form.get('username')
-    fullname = request.form.get('fullname')
-    email = request.form.get('email')
-    password = request.form.get('password')
-    data=get_data()
+def user_exist_and_insert(data,username,fullname,email,password):
     exist = None
     for userdata in data:
         (dbuser,dbpass,dbemail,dbfullname) = userdata
@@ -52,6 +51,16 @@ def user_register():
             break
     if (exist != True):
         set_data(username,fullname,email,password)
+    return exist
+
+@app.route('/user_register', methods=['POST'])
+def user_register():
+    username = request.form.get('username')
+    fullname = request.form.get('fullname')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    data=get_data()
+    exist=user_exist_and_insert(data,username,fullname,email,password)
     return render_template('user_inserted.html',
                            username=username,
                            fullname=fullname,
@@ -76,17 +85,21 @@ def show_users():
 def login_form():
     return render_template('login_form.html')
 
-@app.route('/user_login',  methods=['POST'])
-def user_login():
-    username = request.form.get('username')
-    password = request.form.get('password')
-    acces = get_data()
+def login(acces,username,password):
     enter = None 
     for userdata in acces:
         (dbuser,dbpass,dbemail,dbfullname) = userdata
         if (dbuser == username and dbpass == password):
             enter=True
             break
+    return enter,dbuser,dbpass,dbemail,dbfullname
+
+@app.route('/user_login',  methods=['POST'])
+def user_login():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    acces = get_data()
+    (enter,dbuser,dbpass,dbemail,dbfullname)=login(acces,username,password)
     return render_template('login.html',
                            enter=enter,
                            username = dbuser,
