@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 #---------------SQL functions in order to select and insert------------------------
 
-# Aquesta funcio seleccionem els diferents paramètres dintre de la nostra base de dades en la fila users.
+# This function select the differents parameters within our database in line users.
 def get_data():
     conn = sqlite3.connect('mydatabase.db')
     cursor = conn.execute("select username,password,email,fullname from users")
@@ -16,7 +16,7 @@ def get_data():
     conn.close()
     return acces
 
-# Aquesta funcio insertem dintre de la fila users els diferents valors als nostres paràmetres.
+# This function insert the different values in our databases.
 def set_data(username,fullname,email,password):
     conn = sqlite3.connect('mydatabase.db')
     cursor=conn.execute("insert into users (username,fullname,email,password) values (?, ?, ?, ?)",
@@ -50,7 +50,7 @@ def index():
 def insert_user():
     return render_template('insert_user.html')
 
-# Aquesta funcio insertem els diferents paràmetres i ho comparem amb els existens.
+# In this function insert different parameters and compared with all existing.
 def user_exist_and_insert(data,username,fullname,email,password):
     exist = None
     for userdata in data:
@@ -78,7 +78,7 @@ def user_register():
                            exist=exist)
 
 @app.route('/show_users', methods=['POST','GET'])
-# Mostrem els diferents usuaris amb el metode GET i eliminar amb el POST.
+# We show different users with the GET method and eliminate the parameters with POST method.
 def show_users():
     delete="False"
     if request.method=='GET':
@@ -94,7 +94,7 @@ def show_users():
 @app.route('/login')
 def login_form():
     return render_template('login_form.html')
-# Aquesta funcio fem una busqueda dintre de la nostra llista acces si coincideix retornem els valors.
+# In this function we make a search in our list and if it matches, the values are returned
 def login(acces,username,password):
     enter = None
     for userdata in acces:
