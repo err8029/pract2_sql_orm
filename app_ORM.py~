@@ -30,7 +30,7 @@ def user_register():
                            exist=exist)
 
 @app.route('/show_users')
-# Delete doesnt work with ORM
+# We show different users with the GET method and eliminate the parameters with POST method.
 def show_users():
     show_users = ORM()
     data = show_users.show_usersORM()

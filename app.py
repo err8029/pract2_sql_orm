@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for, request
 from flask import render_template
 import sqlite3
-from ORMmethods import ORM
+
 
 
 app = Flask(__name__)
@@ -74,8 +74,8 @@ def user_register():
     fullname = request.form.get('fullname')
     email = request.form.get('email')
     password = request.form.get('password')
-    exist=ORM.insert_user(username,fullname,email,password)
-    print exist
+    data=get_data()
+    exist=user_exist_and_insert(data,username,fullname,email,password)
     return render_template('user_inserted.html',
                            username=username,
                            fullname=fullname,

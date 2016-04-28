@@ -24,7 +24,7 @@ class ORM():
 
     def loginORM(self,username,password):
         login = None
-        (dbuser,dbpass,dbemail,dbfullname) =(None, None, None, None)
+        (dbuser,dbpass,dbemail,dbfullname) =(None,None,None,None)
         for log in self.session.query(User.username, User.password, User.email, User.fullname).\
             filter(User.username == username, User.password == password):
                 (dbuser,dbpass,dbemail,dbfullname) = log

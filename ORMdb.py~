@@ -19,7 +19,7 @@ class User(Base):
         self.password = password
         
      def __repr__(self):
-        return "<user(username='%s', fullname='%s' , email='%s' password='%s' )>" % (
+        return "<user(username='%s', fullname="%s" ,="" email="%s" password="%s" )="">" % (
                              self.username, self.fullname, self.email, self.password)
 
 
