@@ -35,13 +35,19 @@ def delete_all():
     conn.close()
 
 #---------------ORM functions in order to select and insert------------------------
-
+def get_dataORM():
+    conn = sqlite3.connect('mydatabase.db')
+    cursor = conn.execute("select username,password,email,fullname from users")
+    acces = [row for row in cursor]
+    conn.close()
+    return acces
 
 
 
 
 
 #-------------------------------App methods----------------------------------------
+# HOME PAGE.
 @app.route('/')
 def index():
     return render_template('index.html')
