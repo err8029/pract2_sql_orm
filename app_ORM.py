@@ -31,10 +31,15 @@ def user_register():
                            password=password,
                            exist=exist)
 
-@app.route('/show_users')
+@app.route('/show_users', methods=['POST','GET'])
 # Delete doesnt work with ORM
 def show_users():
-    show_users = ORM()
+    if request.method=='GET':
+        show_users = ORM()
+    if request.method=='POST':
+        delete = request.form.get('delete')
+        if delete=="True":
+            return render_template('index.html')
     data = show_users.show_usersORM()
     return render_template('show_users.html',
                            data=data)

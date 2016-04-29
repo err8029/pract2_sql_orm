@@ -25,7 +25,7 @@ class User(Base):
                              self.username, self.fullname, self.email, self.password)
 
 
-     #we specify the path and engine
+     #we specify the path and create engine
      path_to_db = "mydatabase.db"
      engine = create_engine('sqlite:///' + path_to_db)
      Base.metadata.create_all(engine)
