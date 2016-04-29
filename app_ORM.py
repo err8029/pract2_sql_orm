@@ -9,19 +9,21 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+#Insert user page
 @app.route('/insert_user')
 def insert_user():
     return render_template('insert_user.html')
 
+#returns user inserted page if insert succesful
 @app.route('/user_register', methods=['POST'])
 def user_register():
     username = request.form.get('username')
     fullname = request.form.get('fullname')
     email = request.form.get('email')
     password = request.form.get('password')
-    exist=None
     new_insert = ORM()
-    new_insert.insert_userORM(""+username,""+fullname,""+email,""+password)
+    exist = new_insert.insert_userORM(""+username,""+fullname,""+email,""+password)
+    print exist
     return render_template('user_inserted.html',
                            username=username,
                            fullname=fullname,

@@ -5,6 +5,8 @@ from sqlalchemy import Column, Integer, String
 Base = declarative_base()
 
 class User(Base):
+     
+     #same operation as CREATE TABLE in SQL but ORM 
      __tablename__ = 'users'
      id = Column(Integer, primary_key=True)
      username = Column(String)
@@ -23,6 +25,7 @@ class User(Base):
                              self.username, self.fullname, self.email, self.password)
 
 
+     #we specify the path and engine
      path_to_db = "mydatabase.db"
      engine = create_engine('sqlite:///' + path_to_db)
      Base.metadata.create_all(engine)
